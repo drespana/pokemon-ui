@@ -8,18 +8,17 @@ import Pokemon from './Pokemon';
 })
 export class PokeService {
   private url = 'https://pokeapi.co/api/v2/pokemon?limit=151'
-  private pokemons$: Subject<any[]>= new Subject();
+  private allPokemons: Object[] = [];
 
   constructor(private http:HttpClient) { }
 
   private refreshPokemon() {
-    this.http.get(this.url).subscribe(pokemons => {
-      this.pokemons$.next(pokemons as any);
-    })
+   this.http.get(this.url).subscribe((pokemons:any) => this.allPokemons = pokemons.results)
   }
 
-  getPokemon() {
+  getPokemons(): any[] {
     this.refreshPokemon();
-    return this.pokemons$
+    return this.allPokemons
   }
+
 }
