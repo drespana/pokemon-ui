@@ -2,7 +2,6 @@ import { Observable } from 'rxjs';
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PokeService } from '../poke.service';
-import { BehaviorSubject } from 'rxjs';
 import Pokemon from '../Pokemon'
 
 @Component({
@@ -12,6 +11,7 @@ import Pokemon from '../Pokemon'
 })
 export class PokeBuildComponent implements OnInit {
   pokemons: any[] = [];
+  pokemon:any 
 
   constructor(
     private pokemonService: PokeService
@@ -23,5 +23,9 @@ export class PokeBuildComponent implements OnInit {
 
   fetchPokemons(): void{
     this.pokemons = this.pokemonService.getPokemons()
+  }
+
+  getPokemon(){
+    
   }
 }

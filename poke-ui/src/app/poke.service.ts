@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, tap, of,map } from 'rxjs';
+import { Observable, Subject, tap, of } from 'rxjs';
 import Pokemon from './Pokemon';
 
 @Injectable({
@@ -13,10 +13,10 @@ export class PokeService {
   constructor(private http:HttpClient) { }
 
   private refreshPokemon() {
-   this.http.get(this.url).subscribe((pokemons:any) => this.allPokemons = pokemons.results)
+    this.http.get(this.url).subscribe((pokemons:any) => this.allPokemons = pokemons.results)
   }
 
-  getPokemons(): any[] {
+  getPokemons() {
     this.refreshPokemon();
     return this.allPokemons
   }

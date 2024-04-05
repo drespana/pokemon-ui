@@ -4,11 +4,13 @@ import { HttpClientModule, HttpClient, withFetch, provideHttpClient } from '@ang
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MaterialModel } from './material/meterial.module'; 
 import { PokeHomeComponent } from './poke-home/poke-home.component';
 import { PokeDeckComponent } from './poke-deck/poke-deck.component';
 import { PokeBuildComponent } from './poke-build/poke-build.component';
 import { PokeService } from './poke.service';
 import { PokeNavigationComponent } from './poke-navigation/poke-navigation.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { PokeNavigationComponent } from './poke-navigation/poke-navigation.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModel,
   ],
   providers: [
     provideClientHydration(),
     PokeService,
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
