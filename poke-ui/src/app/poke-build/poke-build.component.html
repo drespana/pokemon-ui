@@ -1,6 +1,8 @@
 
 <h3>Choose your Pokemon!</h3>
 
-<div *ngFor="let pokemon of pokemons">
-{{pokemon.name}} {{pokemon.url}}
-</div>
+<mat-card *ngFor="let pokemon of pokemons">
+{{pokemon.name}} 
+</mat-card>
+
+<img [src]="pokemon">
