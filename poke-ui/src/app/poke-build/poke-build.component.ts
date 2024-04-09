@@ -21,6 +21,7 @@ export class PokeBuildComponent implements OnInit {
   ngOnInit() {
 
     this.fetchPokemons();
+    
   }
 
   fetchPokemons(): void{
