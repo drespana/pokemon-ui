@@ -1,9 +1,28 @@
-
 <mat-toolbar color="primary">
-    <button mat-icon-button><mat-icon>menu</mat-icon></button>
-    <button mat-button class="home-button" ><h1>Pokemon</h1></button>
-    <div class="toolbar-end">
-        <button mat-button>profile</button>
-    </div>
+  <button mat-icon-button (click)="sideNav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button 
+  mat-button 
+  class="home-button"
+  routerLink="/home"
+  ><h1>Pokemon</h1></button>
+  <div class="toolbar-end">
+    <button mat-button>profile</button>
+  </div>
 </mat-toolbar>
 
+<mat-sidenav-container class="sideBarNavigation">
+  <mat-sidenav class="sideNavCont" #sideNav mode="side" [(opened)]="opened">
+    <div class="sideNav">
+      <button mat-button routerLink="/build">Build Deck</button>
+      <button mat-button routerLink="/deck">My Squad</button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
