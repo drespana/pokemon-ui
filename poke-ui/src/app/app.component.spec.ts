@@ -4,6 +4,7 @@ import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PokeNavigationComponent } from './poke-navigation/poke-navigation.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -14,7 +15,10 @@ describe('AppComponent', () => {
         HttpClientModule,
         MaterialModule,
       ],
-      declarations: [AppComponent],
+      declarations: [
+        AppComponent,
+        PokeNavigationComponent,
+      ],
     }).compileComponents();
   });
 
@@ -24,7 +28,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'poke-ui'`, () => {
+  it(`should have as title 'Pokemon'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('poke-ui');
@@ -35,7 +39,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Hello, poke-ui'
+      'Pokemon'
     );
   });
 });
