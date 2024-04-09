@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { PokeService } from '../poke.service';
 import Pokemon from '../Pokemon'
 
@@ -11,22 +12,25 @@ import Pokemon from '../Pokemon'
 })
 export class PokeBuildComponent implements OnInit {
   pokemons: any[] = [];
-  pokemon:any 
+  pokemonData:any;
 
   constructor(
-    private pokemonService: PokeService
+    private pokemonService: PokeService,
+    private http: HttpClient,
   ){}
   ngOnInit() {
 
     this.fetchPokemons();
-    this.getPokemon();
   }
 
   fetchPokemons(): void{
     this.pokemons = this.pokemonService.getPokemons()
+    this.pokemons.forEach((pokemon)=>{
+      this.http.get(pokemon.url).subscribe((pokemonInfo)=>{
+        this.pokemonData = pokemonInfo;
+      })
+    })
   }
 
-  getPokemon(){
-    this.pokemon = this.pokemonService.getPokemon()
-  }
+
 }

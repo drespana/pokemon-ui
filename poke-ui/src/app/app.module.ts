@@ -4,13 +4,14 @@ import { HttpClientModule, HttpClient, withFetch, provideHttpClient } from '@ang
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModel } from './material/meterial.module'; 
+import { MaterialModule } from './material/material.module'; 
 import { PokeHomeComponent } from './poke-home/poke-home.component';
 import { PokeDeckComponent } from './poke-deck/poke-deck.component';
 import { PokeBuildComponent } from './poke-build/poke-build.component';
 import { PokeService } from './poke.service';
 import { PokeNavigationComponent } from './poke-navigation/poke-navigation.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { PokeCardComponent } from './poke-card/poke-card.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     PokeDeckComponent,
     PokeBuildComponent,
     PokeNavigationComponent,
+    PokeCardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterialModel,
+    MaterialModule,
   ],
   providers: [
     provideClientHydration(),

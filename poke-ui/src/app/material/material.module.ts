@@ -18,4 +18,4 @@ const MaterialComponents = [
     exports:[MaterialComponents]
 })
 
-export class MaterialModel {};
+export class MaterialModule {};

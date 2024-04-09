@@ -9,11 +9,11 @@ import Pokemon from './Pokemon';
 export class PokeService {
   private url = 'https://pokeapi.co/api/v2/pokemon?limit=151'
   private allPokemons: Object[] = [];
-  private pokemonPic: Object[] = [];
+  private pokemonInfo: Object[] = [];
 
   constructor(private http:HttpClient) { }
 
-  private refreshPokemon() {
+  private refreshPokemons() {
     this.http.get(this.url).subscribe((pokemons:any) => {
       pokemons.results.forEach((pokemon:any)=>{
         this.allPokemons.push(pokemon)
@@ -21,21 +21,12 @@ export class PokeService {
   }
 
   getPokemons() {
-    this.refreshPokemon();
+    this.refreshPokemons();
     return this.allPokemons
   }
 
-  getPokemon(){
-    this.http.get(this.url).subscribe((pokemons:any) => {
-      pokemons.results.forEach((pokemon:any)=>{
-         this.http.get(pokemon.url).subscribe((pokeInfo:any)=>{
-          return this.pokemonPic = pokeInfo.sprites.front_default
-          //this.http.get(pokeInfo.sprites.front_default).subscribe((pokeimg:any)=>{
-            //this.pokemonPic = pokeimg
-            // console.log(this.pokemonPic)
-          //})
-      })
-    })})
+  getPokemon(url:string){
+    return this.http.get(url)
   }
 
 }

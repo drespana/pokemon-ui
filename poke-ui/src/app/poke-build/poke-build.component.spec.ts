@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {MaterialModule} from '../material/material.module'
 import { PokeBuildComponent } from './poke-build.component';
 
 describe('PokeBuildComponent', () => {
@@ -8,6 +8,7 @@ describe('PokeBuildComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports:[MaterialModule],
       declarations: [PokeBuildComponent]
     })
     .compileComponents();
