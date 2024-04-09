@@ -1,0 +1,6 @@
+.pokemon-card {
+   justify-content:column;
+   align-items: center;
+   margin: 10px 10px 10px 10px;
+   padding: 3em 2em 3em 2em;
+}
